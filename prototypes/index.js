@@ -20,26 +20,38 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(pet) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
+    if(pet === kitties){
+    const orangeKitties = kitties
+    .filter(cat => cat.color === 'orange')
+      .map(cat => cat.name)
+      return orangeKitties
+    } else if(pet === puppers){
 
-        /* CODE GOES HERE */
+    const orangePuppers = puppers
+      .filter(dog => dog.color === 'orange')
+      .map(dog => dog.name)
+      return orangePuppers
+    }
+      // Annotation:
+      // Write your annotation here as a comment
+    },
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  sortByAge() {
+  sortByAge(pet) {
     // Sort the kitties by their age
-
-    /* CODE GOES HERE */
-
+  // console.log(kitties.sort((a, b) => b.age - a.age))
+   if(pet === kitties){
+    return kitties.sort((a, b) => b.age - a.age)
+   } else if(pet === puppers) {
+    return puppers.sort((a, b) => b.age - a.age)
+   }
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  growUp() {
+  growUp(pet) {
     // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
@@ -52,9 +64,23 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    /* CODE GOES HERE */
+ if(pet === kitties){
+   const newCatArray = kitties.reduce((arr, cat) => {
+    cat.age += 2
+    arr.push(cat)
+    return arr
+  }, [])
+  return newCatArray
+  } else if(pet === puppers){
+  const newDogArray = puppers.reduce((arr, dog) => {
+    dog.age += 2
+    arr.push(dog)
+    return arr
+  }, [])
+  return newDogArray
   }
+  }
+
 };
 
 // PLEASE READ-----------------------
@@ -474,6 +500,25 @@ const breweryPrompts = {
   getBeerCount() {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
+    let beerIncrementer = 0;
+    
+    const beers = breweries.map(brewery => {
+      return brewery.beers
+    })
+   
+    const joinArr = beers.reduce((arr, beer) => {
+      return arr.concat(beer)
+    },[])
+
+    const beerAmount = joinArr.forEach(beer => {
+      return beerIncrementer++
+    })
+
+    return beerIncrementer
+  
+    // const howManyBeers = beers.forEach(beer => {
+    //   beerIncrementer++
+    // })
 
     /* CODE GOES HERE */
 
